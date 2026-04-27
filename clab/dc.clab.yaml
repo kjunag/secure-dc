@@ -7,11 +7,19 @@ topology:
         CLAB_MGMT_VRF: MGMT
   nodes:
     pc1:
-      kind: arista_ceos
-      image: ceos:4.35.3F
+      kind: linux
+      image: kali-clab:latest
+      cap-add:
+        - NET_ADMIN
+        - NET_RAW
+        - SYS_PTRACE
     pc2:
-      kind: arista_ceos
-      image: ceos:4.35.3F
+      kind: linux
+      image: kali-clab:latest
+      cap-add:
+        - NET_ADMIN
+        - NET_RAW
+        - SYS_PTRACE
     DC1LEAF1:
       kind: arista_ceos
       image: ceos:4.35.3F
@@ -53,23 +61,23 @@ topology:
       image: vrnetlab/vr-fortios:7.2.0
       mgmt-ipv4: 172.20.20.11
   links:
-    - endpoints: ["DC1LEAF1:eth1", "DC1SPINE1:eth1"]
-    - endpoints: ["DC1LEAF2:eth1", "DC1SPINE1:eth2"]
-    - endpoints: ["DC1LEAF3:eth1", "DC1SPINE1:eth3"]
-    - endpoints: ["DC1LEAF4:eth1", "DC1SPINE1:eth4"]
-    - endpoints: ["DC1LEAF5:eth1", "DC1SPINE1:eth5"]
-    - endpoints: ["DC1LEAF6:eth1", "DC1SPINE1:eth6"]
-    - endpoints: ["DC1LEAF1:eth2", "DC1SPINE2:eth1"]
-    - endpoints: ["DC1LEAF2:eth2", "DC1SPINE2:eth2"]
-    - endpoints: ["DC1LEAF3:eth2", "DC1SPINE2:eth3"]
-    - endpoints: ["DC1LEAF4:eth2", "DC1SPINE2:eth4"]
-    - endpoints: ["DC1LEAF5:eth2", "DC1SPINE2:eth5"]
-    - endpoints: ["DC1LEAF6:eth2", "DC1SPINE2:eth6"]
-    - endpoints: ["pc1:eth1", "DC1LEAF1:eth5"]
-    - endpoints: ["pc2:eth1", "DC1LEAF6:eth5"]
-    - endpoints: ["DC1FW1:eth3", "DC1LEAF5:eth3"]
-    - endpoints: ["DC1FW1:eth4", "DC1LEAF6:eth3"]
-    - endpoints: ["DC1FW2:eth3", "DC1LEAF5:eth4"]
-    - endpoints: ["DC1FW2:eth4", "DC1LEAF6:eth4"]
-    - endpoints: ["DC1FW1:eth1", "DC1FW2:eth1"]
-    - endpoints: ["DC1FW1:eth2", "DC1FW2:eth2"]
+    - endpoints: [ "DC1LEAF1:eth1", "DC1SPINE1:eth1" ]
+    - endpoints: [ "DC1LEAF2:eth1", "DC1SPINE1:eth2" ]
+    - endpoints: [ "DC1LEAF3:eth1", "DC1SPINE1:eth3" ]
+    - endpoints: [ "DC1LEAF4:eth1", "DC1SPINE1:eth4" ]
+    - endpoints: [ "DC1LEAF5:eth1", "DC1SPINE1:eth5" ]
+    - endpoints: [ "DC1LEAF6:eth1", "DC1SPINE1:eth6" ]
+    - endpoints: [ "DC1LEAF1:eth2", "DC1SPINE2:eth1" ]
+    - endpoints: [ "DC1LEAF2:eth2", "DC1SPINE2:eth2" ]
+    - endpoints: [ "DC1LEAF3:eth2", "DC1SPINE2:eth3" ]
+    - endpoints: [ "DC1LEAF4:eth2", "DC1SPINE2:eth4" ]
+    - endpoints: [ "DC1LEAF5:eth2", "DC1SPINE2:eth5" ]
+    - endpoints: [ "DC1LEAF6:eth2", "DC1SPINE2:eth6" ]
+    - endpoints: [ "pc1:eth1", "DC1LEAF1:eth5" ]
+    - endpoints: [ "pc2:eth1", "DC1LEAF6:eth5" ]
+    - endpoints: [ "DC1FW1:eth3", "DC1LEAF5:eth3" ]
+    - endpoints: [ "DC1FW1:eth4", "DC1LEAF6:eth3" ]
+    - endpoints: [ "DC1FW2:eth3", "DC1LEAF5:eth4" ]
+    - endpoints: [ "DC1FW2:eth4", "DC1LEAF6:eth4" ]
+    - endpoints: [ "DC1FW1:eth1", "DC1FW2:eth1" ]
+    - endpoints: [ "DC1FW1:eth2", "DC1FW2:eth2" ]
