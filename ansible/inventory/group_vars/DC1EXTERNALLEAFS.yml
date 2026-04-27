@@ -8,3 +8,15 @@ transit_vlans:
   - name: DMZ_TRANSIT
     vlan_id: 300
     gateway: 172.16.20.1/30
+portchannels:
+  - number: 10
+    esi: "0000:0000:0101:0102:0010"    
+    rt: "01:01:01:02:00:10"            
+    interfaces:
+      - eth3
+  - number: 11
+    esi: "0000:0000:0101:0102:0011"
+    rt: "01:01:01:02:00:11"
+    interfaces:
+      - eth4
+external: true

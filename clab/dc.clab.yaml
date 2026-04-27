@@ -44,14 +44,14 @@ topology:
       kind: arista_ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.9
-    # DC1FW1:
-    #   kind: fortinet_fortigate
-    #   image: vrnetlab/vr-fortios:7.2.0
-    #   mgmt-ipv4: 172.20.20.10
-    # DC1FW2:
-    #   kind: fortinet_fortigate
-    #   image: vrnetlab/vr-fortios:7.2.0
-    #   mgmt-ipv4: 172.20.20.11
+    DC1FW1:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.0
+      mgmt-ipv4: 172.20.20.10
+    DC1FW2:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.0
+      mgmt-ipv4: 172.20.20.11
   links:
     - endpoints: ["DC1LEAF1:eth1", "DC1SPINE1:eth1"]
     - endpoints: ["DC1LEAF2:eth1", "DC1SPINE1:eth2"]
@@ -65,9 +65,11 @@ topology:
     - endpoints: ["DC1LEAF4:eth2", "DC1SPINE2:eth4"]
     - endpoints: ["DC1LEAF5:eth2", "DC1SPINE2:eth5"]
     - endpoints: ["DC1LEAF6:eth2", "DC1SPINE2:eth6"]
-    - endpoints: ["pc1:eth1", "DC1LEAF1:eth3"]
-    - endpoints: ["pc2:eth1", "DC1LEAF6:eth3"]
-    # - endpoints: ["DC1FW1:eth1", "DC1LEAF5:eth3"]
-    # - endpoints: ["DC1FW1:eth2", "DC1LEAF6:eth3"]
-    # - endpoints: ["DC1FW2:eth1", "DC1LEAF5:eth4"]
-    # - endpoints: ["DC1FW2:eth2", "DC1LEAF6:eth4"]
+    - endpoints: ["pc1:eth1", "DC1LEAF1:eth5"]
+    - endpoints: ["pc2:eth1", "DC1LEAF6:eth5"]
+    - endpoints: ["DC1FW1:eth3", "DC1LEAF5:eth3"]
+    - endpoints: ["DC1FW1:eth4", "DC1LEAF6:eth3"]
+    - endpoints: ["DC1FW2:eth3", "DC1LEAF5:eth4"]
+    - endpoints: ["DC1FW2:eth4", "DC1LEAF6:eth4"]
+    - endpoints: ["DC1FW1:eth1", "DC1FW2:eth1"]
+    - endpoints: ["DC1FW1:eth2", "DC1FW2:eth2"]

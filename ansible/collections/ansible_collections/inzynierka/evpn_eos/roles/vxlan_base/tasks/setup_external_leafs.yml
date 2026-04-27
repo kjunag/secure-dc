@@ -1,0 +1,37 @@
+---
+- name: Set interfaces to Layer2 mode
+  arista.eos.interfaces:
+    config:
+      - name: "Ethernet{{ item.1 | regex_replace('eth', '') }}"
+        mode: layer2
+  loop: "{{ portchannels | subelements('interfaces') }}"
+  when: external is defined
+
+- name: Configure port-channels as trunks with ESI
+  arista.eos.eos_config:
+    lines:
+      - "switchport mode trunk"
+      - "switchport trunk allowed vlan {{ transit_vlans | map(attribute='vlan_id') | join(',') }}"
+      - "evpn ethernet-segment"
+      - "   identifier {{ item.esi }}"
+      - "   route-target import {{ item.rt }}"
+      - "lacp system-id {{ item.rt }}"
+    parents: "interface Port-Channel{{ item.number }}"
+  loop: "{{ portchannels }}"
+  when: external is defined
+
+- name: Assign physical interfaces to port-channels
+  arista.eos.eos_config:
+    lines:
+      - "channel-group {{ item.0.number }} mode active"
+    parents: "interface Ethernet{{ item.1 | regex_replace('eth', '') }}"
+  loop: "{{ portchannels | subelements('interfaces') }}"
+  when: external is defined
+
+- name: Assign physical interfaces to port-channels
+  arista.eos.eos_config:
+    lines:
+      - "channel-group {{ item.0.number }} mode active"
+    parents: "interface Ethernet{{ item.1 | regex_replace('eth', '') }}"
+  loop: "{{ portchannels | subelements('interfaces') }}"
+  when: external is defined

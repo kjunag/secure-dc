@@ -1,5 +1,5 @@
 ---
-- name: Example playbook
-  hosts: localhost
+- name: Deploy VXLAN fabric in Datacenter
+  hosts: DC1SWITCHES
   roles:
-    - role: inzynierka.evpn_eos.run
+    - role: inzynierka.evpn_eos.vxlan_base

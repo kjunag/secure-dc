@@ -1,11 +1,13 @@
 ---
-- name: Setup vlans
-  ansible.builtin.import_tasks: setup_vlans.yml
-- name: Create VRFs
-  ansible.builtin.import_tasks: create_vrfs.yml
-- name: Basic config
-  ansible.builtin.import_tasks: basic_setup.yml
-- name: Setup interfaces
-  ansible.builtin.import_tasks: setup_interfaces.yml
-- name: Setup BGP
-  ansible.builtin.import_tasks: setup_bgp.yml
+# - name: Setup vlans
+#   ansible.builtin.import_tasks: setup_vlans.yml
+# - name: Create VRFs
+#   ansible.builtin.import_tasks: create_vrfs.yml
+# - name: Basic config
+#   ansible.builtin.import_tasks: basic_setup.yml
+# - name: Setup interfaces
+#   ansible.builtin.import_tasks: setup_interfaces.yml
+# - name: Setup BGP
+#   ansible.builtin.import_tasks: setup_bgp.yml
+- name: Setup EXTERNAL LEAFS
+  ansible.builtin.import_tasks: setup_external_leafs.yml
