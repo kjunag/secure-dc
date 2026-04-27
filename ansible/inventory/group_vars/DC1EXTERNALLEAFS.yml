@@ -1,0 +1,10 @@
+transit_vlans:
+  - name: APPS_TRANSIT
+    vlan_id: 100
+    gateway: 172.16.0.1/30
+  - name: STORAGE_TRANSIT
+    vlan_id: 200
+    gateway: 172.16.10.1/30
+  - name: DMZ_TRANSIT
+    vlan_id: 300
+    gateway: 172.16.20.1/30

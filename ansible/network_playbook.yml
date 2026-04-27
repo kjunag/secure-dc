@@ -1,0 +1,6 @@
+---
+- name: Setup VXLAN EVPN fabric
+  hosts: fabric_switches
+  gather_facts: false
+  roles:
+    - role: inzynierka.evpn_eos.vxlan_base

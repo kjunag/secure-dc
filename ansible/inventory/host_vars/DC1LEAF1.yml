@@ -1,0 +1,3 @@
+bgp_asn: 65101
+bgp_id: 10.10.10.1
+fabric_address: 10.10.10.1/32

@@ -1,0 +1,73 @@
+name: datacenter
+
+topology:
+  kinds:
+    arista_ceos:
+      env:
+        CLAB_MGMT_VRF: MGMT
+  nodes:
+    pc1:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+    pc2:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+    DC1LEAF1:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.2
+    DC1LEAF2:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.3
+    DC1LEAF3:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.4
+    DC1LEAF4:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.5
+    DC1LEAF5:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.6
+    DC1LEAF6:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.7
+    DC1SPINE1:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.8
+    DC1SPINE2:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.9
+    # DC1FW1:
+    #   kind: fortinet_fortigate
+    #   image: vrnetlab/vr-fortios:7.2.0
+    #   mgmt-ipv4: 172.20.20.10
+    # DC1FW2:
+    #   kind: fortinet_fortigate
+    #   image: vrnetlab/vr-fortios:7.2.0
+    #   mgmt-ipv4: 172.20.20.11
+  links:
+    - endpoints: ["DC1LEAF1:eth1", "DC1SPINE1:eth1"]
+    - endpoints: ["DC1LEAF2:eth1", "DC1SPINE1:eth2"]
+    - endpoints: ["DC1LEAF3:eth1", "DC1SPINE1:eth3"]
+    - endpoints: ["DC1LEAF4:eth1", "DC1SPINE1:eth4"]
+    - endpoints: ["DC1LEAF5:eth1", "DC1SPINE1:eth5"]
+    - endpoints: ["DC1LEAF6:eth1", "DC1SPINE1:eth6"]
+    - endpoints: ["DC1LEAF1:eth2", "DC1SPINE2:eth1"]
+    - endpoints: ["DC1LEAF2:eth2", "DC1SPINE2:eth2"]
+    - endpoints: ["DC1LEAF3:eth2", "DC1SPINE2:eth3"]
+    - endpoints: ["DC1LEAF4:eth2", "DC1SPINE2:eth4"]
+    - endpoints: ["DC1LEAF5:eth2", "DC1SPINE2:eth5"]
+    - endpoints: ["DC1LEAF6:eth2", "DC1SPINE2:eth6"]
+    - endpoints: ["pc1:eth1", "DC1LEAF1:eth3"]
+    - endpoints: ["pc2:eth1", "DC1LEAF6:eth3"]
+    # - endpoints: ["DC1FW1:eth1", "DC1LEAF5:eth3"]
+    # - endpoints: ["DC1FW1:eth2", "DC1LEAF6:eth3"]
+    # - endpoints: ["DC1FW2:eth1", "DC1LEAF5:eth4"]
+    # - endpoints: ["DC1FW2:eth2", "DC1LEAF6:eth4"]

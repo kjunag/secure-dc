@@ -1,0 +1,4 @@
+fabric_interfaces: "{{ query('sequence', 'start=1 end={{ high_fabric_int }} format=Ethernet%d') }}"
+high_fabric_int: 6
+bgp_asn: 65000
+spine: true

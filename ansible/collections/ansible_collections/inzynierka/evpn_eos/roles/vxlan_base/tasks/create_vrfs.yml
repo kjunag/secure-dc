@@ -1,0 +1,22 @@
+---
+- name: Create VRFs
+  arista.eos.vrf:
+    name: "{{ item.name }}"
+    rd: "{{ item.rd }}"        # ← było item.name, powinno być item.rd
+    interfaces: >-
+      {{
+        vlans
+        | selectattr('name', 'match', '^' ~ item.vlan_prefix)
+        | map(attribute='vlan_id')
+        | map('regex_replace', '^', 'Vlan')
+        | list
+      }}
+  loop: "{{ VRFS }}"
+  when: VRFS is defined
+
+- name: Enable VRFs routing
+  arista.eos.config:
+    lines:
+      - ip routing vrf {{ item.name }}
+  loop: "{{ VRFS }}"
+  when: VRFS is defined

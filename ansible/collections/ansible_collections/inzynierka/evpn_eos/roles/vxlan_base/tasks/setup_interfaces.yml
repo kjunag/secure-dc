@@ -1,0 +1,65 @@
+---
+- name: Enable routing on fabric interfaces
+  arista.eos.interfaces:
+    config:
+      - name: "{{ item }}"
+        mtu: 9000
+        mode: layer3
+        enabled: true
+  loop: "{{ fabric_interfaces }}"
+
+- name: Enable ipv6 on fabric interfaces
+  arista.eos.config:
+    lines:
+      - ipv6 enable
+    parents:
+      - interface {{ item }}
+  loop: "{{ fabric_interfaces }}"
+
+- name: Create Lo0 interface on Leafs
+  arista.eos.l3_interfaces:
+    config:
+      - name: Loopback0
+        ipv4:
+          - address: "{{ fabric_address }}"
+  when: spine is not defined
+
+- name: Configure VLAN interfaces on Leafs
+  arista.eos.l3_interfaces:
+    config:
+      - name: "Vlan{{ item.vlan_id }}"
+        ipv4:
+          - address: "{{ item.gateway }}"
+            virtual: true
+  loop: "{{ vlans }}"
+  when: spine is not defined
+
+- name: Configure transit VLAN interfaces on Leafs
+  arista.eos.l3_interfaces:
+    config:
+      - name: "Vlan{{ item.vlan_id }}"
+        ipv4:
+          - address: "{{ item.gateway }}"
+            virtual: true
+  loop: "{{ transit_vlans }}"
+  when: spine is not defined and transit_vlans is defined
+
+- name: Setup VxLAN interfaces with VLANs
+  arista.eos.config:
+    lines:
+      - vxlan source-interface Loopback0
+      - vxlan udp-port 4789
+      - vxlan vlan {{ item.vlan_id }} vni {{ item.vlan_id }}
+    parents:
+      - interface vxlan 1
+  when: spine is not defined
+  loop: "{{ vlans }}"
+
+- name: Setup VxLAN interfaces with VRFs
+  arista.eos.config:
+    lines:
+      - vxlan vrf {{ item.name }} vni {{ item.vni }}
+    parents:
+      - interface vxlan 1
+  when: spine is not defined
+  loop: "{{ VRFS }}"

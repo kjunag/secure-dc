@@ -1,0 +1,57 @@
+fabric_interfaces: "{{ query('sequence', 'start=1 end={{ high_fabric_int }} format=Ethernet%d') }}"
+high_fabric_int: 2
+leaf: true
+apps_vlans:
+  - name: APPS1
+    vlan_id: 101
+    gateway: 172.16.1.1/24
+  - name: APPS2
+    vlan_id: 102
+    gateway: 172.16.2.1/24
+  - name: APPS3
+    vlan_id: 103
+    gateway: 172.16.3.1/24
+  - name: APPS4
+    vlan_id: 104
+    gateway: 172.16.4.1/24
+storage_vlans:
+  - name: STORAGE1
+    vlan_id: 201
+    gateway: 172.16.11.1/24
+  - name: STORAGE2
+    vlan_id: 202
+    gateway: 172.16.12.1/24
+  - name: STORAGE3
+    vlan_id: 203
+    gateway: 172.16.13.1/24
+  - name: STORAGE4
+    vlan_id: 204
+    gateway: 172.16.14.1/24
+dmz_vlans:
+  - name: DMZ1
+    vlan_id: 301
+    gateway: 172.16.21.1/24
+  - name: DMZ2
+    vlan_id: 302
+    gateway: 172.16.22.1/24
+  - name: DMZ3
+    vlan_id: 303
+    gateway: 172.16.23.1/24
+  - name: DMZ4
+    vlan_id: 304
+    gateway: 172.16.24.1/24
+vlans: "{{ [apps_vlans, storage_vlans, dmz_vlans] | community.general.lists_mergeby('name') }}"
+
+VRFS:
+  - name: APPS-VRF
+    rd: 65100:100
+    vlan_prefix: APPS
+    vni: 5100
+  - name: STORAGE-VRF
+    rd: 65100:200
+    vlan_prefix: STORAGE
+    vni: 5200
+  - name: DMZ-VRF
+    rd: 65100:300
+    vlan_prefix: DMZ
+    vni: 5300

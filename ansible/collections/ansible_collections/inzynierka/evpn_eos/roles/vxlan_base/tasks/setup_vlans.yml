@@ -1,0 +1,23 @@
+---
+- name: Setup normal VLANs
+  arista.eos.vlans:
+    config: >-
+      {{
+        vlans
+        | map('dict2items')
+        | map('selectattr', 'key', 'in', ['name', 'vlan_id'])
+        | map('items2dict')
+        | list
+      }}
+  when: vlans is defined
+- name: Setup transit VLANs
+  arista.eos.vlans:
+    config: >-
+      {{
+          transit_vlans
+          | map('dict2items')
+          | map('selectattr', 'key', 'in', ['name', 'vlan_id'])
+          | map('items2dict')
+          | list
+      }}
+  when: transit_vlans is defined

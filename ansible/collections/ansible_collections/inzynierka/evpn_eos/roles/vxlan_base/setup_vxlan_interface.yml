@@ -1,0 +1,7 @@
+---
+- name: Create Lo0 interface
+  arista.eos.l3_interfaces:
+    config:
+      - name: Loopback0
+        ipv4:
+          - address: "{{ fabric_address }}"

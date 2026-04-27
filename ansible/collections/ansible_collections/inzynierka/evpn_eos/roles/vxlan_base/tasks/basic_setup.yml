@@ -1,0 +1,22 @@
+---
+- name: Enable ipv6 routing
+  arista.eos.config:
+    lines:
+      - ipv6 unicast-routing
+      - ip routing
+      - ip routing ipv6 interfaces
+- name: Set virtual MAC address on Leafs
+  arista.eos.config:
+    lines:
+      - ip virtual-router mac-address 00:1C:73:00:00:01
+  when: spine is not defined
+
+- name: Configure SNMPv3
+  arista.eos.eos_config:
+    lines:
+      - "snmp-server group admin v3 priv"
+      - "snmp-server user admin admin v3 auth sha admin1234 priv aes admin1234"
+      - "snmp-server location admin"
+      - "snmp-server contact admin"
+      - "snmp-server vrf MGMT"
+#      - "snmp-server host {{ snmp_trap_host }} version 3 priv {{ snmp_user }}"
