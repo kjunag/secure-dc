@@ -1,24 +1,7 @@
 {
   "freeTextAnnotations": [],
   "freeShapeAnnotations": [],
-  "trafficRateAnnotations": [
-    {
-      "id": "traffic-rate-1",
-      "position": {
-        "x": 34.11720507634513,
-        "y": 389.051009533165
-      },
-      "nodeId": "DC1FW1",
-      "interfaceName": "eth1",
-      "mode": "chart",
-      "textMetric": "combined",
-      "backgroundOpacity": 20,
-      "borderWidth": 1,
-      "borderRadius": 8,
-      "width": 280,
-      "height": 170
-    }
-  ],
+  "trafficRateAnnotations": [],
   "groupStyleAnnotations": [],
   "networkNodeAnnotations": [],
   "nodeAnnotations": [
@@ -120,6 +103,21 @@
       },
       "icon": "fortigate",
       "iconCornerRadius": 0
+    },
+    {
+      "id": "link-to-dc",
+      "position": {
+        "x": 1080,
+        "y": 380
+      }
+    },
+    {
+      "id": "DC1WANSW1",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 960,
+        "y": 380
+      }
     }
   ],
   "edgeAnnotations": [],

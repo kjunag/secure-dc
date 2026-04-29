@@ -1,0 +1,45 @@
+name: ISP
+
+topology:
+  kinds:
+    arista_ceos:
+      env:
+        CLAB_MGMT_VRF: MGMT
+  nodes:
+    PE1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+      mgmt-ipv4: 172.20.20.15
+    P1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+      mgmt-ipv4: 172.20.20.16
+    P2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+      mgmt-ipv4: 172.20.20.17
+    P3:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+      mgmt-ipv4: 172.20.20.18
+    P4:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+      mgmt-ipv4: 172.20.20.19
+    PE2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+      mgmt-ipv4: 172.20.20.20
+    link-to-dc:
+      kind: bridge
+    link-to-office:
+      kind: bridge
+  links:
+    - endpoints: [ "PE1:e0/1", "link-to-dc:eth1" ]
+    - endpoints: ["PE1:e0/2", "P1:e0/2"]
+    - endpoints: ["P1:e0/1", "P2:e0/1"]
+    - endpoints: ["P2:e0/2", "PE2:e0/2"]
+    - endpoints: ["PE2:e0/3", "P3:e0/3"]
+    - endpoints: ["P3:e0/1", "P4:e0/1"]
+    - endpoints: ["P4:e0/3", "PE1:e0/3"]
+    - endpoints: ["PE2:e0/1", "link-to-office:eth2"]

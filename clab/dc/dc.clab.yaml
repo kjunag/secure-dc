@@ -60,6 +60,12 @@ topology:
       kind: fortinet_fortigate
       image: vrnetlab/vr-fortios:7.2.0
       mgmt-ipv4: 172.20.20.11
+    DC1WANSW1:
+      kind: cisco_iol
+      image: git.szpadel.win/szpadel/cisco_iol:L2-17.12.0.1
+      type: l2
+    link-to-dc:
+      kind: bridge
   links:
     - endpoints: [ "DC1LEAF1:eth1", "DC1SPINE1:eth1" ]
     - endpoints: [ "DC1LEAF2:eth1", "DC1SPINE1:eth2" ]
@@ -81,3 +87,6 @@ topology:
     - endpoints: [ "DC1FW2:eth4", "DC1LEAF6:eth4" ]
     - endpoints: [ "DC1FW1:eth1", "DC1FW2:eth1" ]
     - endpoints: [ "DC1FW1:eth2", "DC1FW2:eth2" ]
+    - endpoints: [ "DC1WANSW1:e0/1", "DC1FW1:eth5" ]
+    - endpoints: [ "DC1WANSW1:e0/2", "DC1FW2:eth5" ]
+    - endpoints: [ "DC1WANSW1:e0/3", "link-to-dc:eth0" ]
