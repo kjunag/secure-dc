@@ -10,7 +10,7 @@ topology:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-17.12.0.1
       type: l2
-      mgmt-ipv4: 172.20.20.27
+      mgmt-ipv4: 172.20.20.29
     OFF1FW1:
       kind: fortinet_fortigate
       image: vrnetlab/vr-fortios:7.2.0
@@ -18,45 +18,45 @@ topology:
     OFF1FW2:
       kind: fortinet_fortigate
       image: vrnetlab/vr-fortios:7.2.0
-      mgmt-ipv4: 172.20.20.21
+      mgmt-ipv4: 172.20.20.22
     OFF1DISTSW1:
       kind: arista_ceos
       image: ceos:4.35.3F
-      mgmt-ipv4: 172.20.20.22
+      mgmt-ipv4: 172.20.20.23
     OFF1DISTSW2:
       kind: arista_ceos
       image: ceos:4.35.3F
-      mgmt-ipv4: 172.20.20.23
+      mgmt-ipv4: 172.20.20.24
     OFF1ACCSW1:
       kind: arista_ceos
       image: ceos:4.35.3F
-      mgmt-ipv4: 172.20.20.24
+      mgmt-ipv4: 172.20.20.25
     OFF1ACCSW2:
       kind: arista_ceos
       image: ceos:4.35.3F
-      mgmt-ipv4: 172.20.20.25
+      mgmt-ipv4: 172.20.20.26
     OFF1ACCSW3:
       kind: arista_ceos
       image: ceos:4.35.3F
-      mgmt-ipv4: 172.20.20.25
+      mgmt-ipv4: 172.20.20.27
     OFF1ACCSW4:
       kind: arista_ceos
       image: ceos:4.35.3F
-      mgmt-ipv4: 172.20.20.26
+      mgmt-ipv4: 172.20.20.28
     link-to-office:
       kind: bridge
     pc1:
       kind: linux
       image: kali-clab:latest
-      mgmt-ipv4: 172.20.20.27
+      mgmt-ipv4: 172.20.20.30
     pc2:
       kind: linux
       image: kali-clab:latest
-      mgmt-ipv4: 172.20.20.28
+      mgmt-ipv4: 172.20.20.31
   links:
-    - endpoints: [ "OFF1WANSW1:eth0/3", "link-to-office:eth3" ]
-    - endpoints: [ "OFF1WANSW1:eth0/1", "OFF1FW1:eth5" ]
-    - endpoints: [ "OFF1WANSW1:eth0/1", "OFF1FW2:eth5" ]
+    - endpoints: [ "OFF1WANSW1:e0/3", "link-to-office:eth3" ]
+    - endpoints: [ "OFF1WANSW1:e0/1", "OFF1FW1:eth5" ]
+    - endpoints: [ "OFF1WANSW1:e0/2", "OFF1FW2:eth5" ]
     - endpoints: [ "OFF1FW1:eth1", "OFF1FW2:eth1" ]
     - endpoints: [ "OFF1FW1:eth2", "OFF1FW2:eth2" ]
     - endpoints: [ "OFF1FW1:eth3", "OFF1DISTSW1:eth1" ]

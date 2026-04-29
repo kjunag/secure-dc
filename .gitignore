@@ -220,6 +220,6 @@ db/
 clab/clab-datacenter
 clab/dc/clab-datacenter
 clab/isp/clab-ISP
-clab/office/clab-office
+clab/office/clab-OFFICE
 clab/dc.clab.yaml.annotations.json
 .claude
