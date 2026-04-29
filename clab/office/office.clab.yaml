@@ -1,0 +1,77 @@
+name: OFFICE
+
+topology:
+  kinds:
+    arista_ceos:
+      env:
+        CLAB_MGMT_VRF: MGMT
+  nodes:
+    OFF1WANSW1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.12.0.1
+      type: l2
+      mgmt-ipv4: 172.20.20.27
+    OFF1FW1:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.0
+      mgmt-ipv4: 172.20.20.21
+    OFF1FW2:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.0
+      mgmt-ipv4: 172.20.20.21
+    OFF1DISTSW1:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.22
+    OFF1DISTSW2:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.23
+    OFF1ACCSW1:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.24
+    OFF1ACCSW2:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.25
+    OFF1ACCSW3:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.25
+    OFF1ACCSW4:
+      kind: arista_ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.26
+    link-to-office:
+      kind: bridge
+    pc1:
+      kind: linux
+      image: kali-clab:latest
+      mgmt-ipv4: 172.20.20.27
+    pc2:
+      kind: linux
+      image: kali-clab:latest
+      mgmt-ipv4: 172.20.20.28
+  links:
+    - endpoints: [ "OFF1WANSW1:eth0/3", "link-to-office:eth3" ]
+    - endpoints: [ "OFF1WANSW1:eth0/1", "OFF1FW1:eth5" ]
+    - endpoints: [ "OFF1WANSW1:eth0/1", "OFF1FW2:eth5" ]
+    - endpoints: [ "OFF1FW1:eth1", "OFF1FW2:eth1" ]
+    - endpoints: [ "OFF1FW1:eth2", "OFF1FW2:eth2" ]
+    - endpoints: [ "OFF1FW1:eth3", "OFF1DISTSW1:eth1" ]
+    - endpoints: [ "OFF1FW1:eth4", "OFF1DISTSW2:eth1" ]
+    - endpoints: [ "OFF1FW2:eth3", "OFF1DISTSW1:eth2" ]
+    - endpoints: [ "OFF1FW2:eth4", "OFF1DISTSW2:eth2" ]
+    - endpoints: [ "OFF1DISTSW1:eth3", "OFF1DISTSW2:eth3" ]
+    - endpoints: [ "OFF1DISTSW1:eth4", "OFF1DISTSW2:eth4" ]
+    - endpoints: [ "OFF1ACCSW1:eth1", "OFF1DISTSW1:eth11" ]
+    - endpoints: [ "OFF1ACCSW2:eth1", "OFF1DISTSW1:eth12" ]
+    - endpoints: [ "OFF1ACCSW3:eth1", "OFF1DISTSW1:eth13" ]
+    - endpoints: [ "OFF1ACCSW4:eth1", "OFF1DISTSW1:eth14" ]
+    - endpoints: [ "OFF1ACCSW1:eth2", "OFF1DISTSW2:eth11" ]
+    - endpoints: [ "OFF1ACCSW2:eth2", "OFF1DISTSW2:eth12" ]
+    - endpoints: [ "OFF1ACCSW3:eth2", "OFF1DISTSW2:eth13" ]
+    - endpoints: [ "OFF1ACCSW4:eth2", "OFF1DISTSW2:eth14" ]
+    - endpoints: [ "pc1:eth1", "OFF1ACCSW1:eth10" ]
+    - endpoints: [ "pc2:eth1", "OFF1ACCSW4:eth10" ]

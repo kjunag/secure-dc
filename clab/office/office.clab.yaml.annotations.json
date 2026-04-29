@@ -1,0 +1,107 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "OFF1WANSW1",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 580,
+        "y": 60
+      }
+    },
+    {
+      "id": "OFF1FW1",
+      "position": {
+        "x": 520,
+        "y": 200
+      },
+      "icon": "fortigate"
+    },
+    {
+      "id": "OFF1FW2",
+      "position": {
+        "x": 640,
+        "y": 200
+      },
+      "icon": "fortigate"
+    },
+    {
+      "id": "OFF1DISTSW1",
+      "position": {
+        "x": 520,
+        "y": 340
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "OFF1DISTSW2",
+      "position": {
+        "x": 640,
+        "y": 340
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "OFF1ACCSW1",
+      "position": {
+        "x": 440,
+        "y": 480
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "OFF1ACCSW2",
+      "position": {
+        "x": 520,
+        "y": 480
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "OFF1ACCSW3",
+      "position": {
+        "x": 640,
+        "y": 480
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "OFF1ACCSW4",
+      "position": {
+        "x": 720,
+        "y": 480
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "link-to-office",
+      "position": {
+        "x": 580,
+        "y": -60
+      }
+    },
+    {
+      "id": "pc1",
+      "position": {
+        "x": 440,
+        "y": 580
+      },
+      "icon": "linux"
+    },
+    {
+      "id": "pc2",
+      "position": {
+        "x": 720,
+        "y": 580
+      },
+      "icon": "linux"
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
