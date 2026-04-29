@@ -1,0 +1,128 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [
+    {
+      "id": "traffic-rate-1",
+      "position": {
+        "x": 34.11720507634513,
+        "y": 389.051009533165
+      },
+      "nodeId": "DC1FW1",
+      "interfaceName": "eth1",
+      "mode": "chart",
+      "textMetric": "combined",
+      "backgroundOpacity": 20,
+      "borderWidth": 1,
+      "borderRadius": 8,
+      "width": 280,
+      "height": 170
+    }
+  ],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "pc1",
+      "position": {
+        "x": 380,
+        "y": 500
+      },
+      "icon": "linux",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "pc2",
+      "position": {
+        "x": 620,
+        "y": 200
+      },
+      "icon": "linux"
+    },
+    {
+      "id": "DC1LEAF1",
+      "position": {
+        "x": 480,
+        "y": 500
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1LEAF2",
+      "position": {
+        "x": 480,
+        "y": 420
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1LEAF3",
+      "position": {
+        "x": 480,
+        "y": 340
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1LEAF4",
+      "position": {
+        "x": 480,
+        "y": 260
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1LEAF5",
+      "position": {
+        "x": 720,
+        "y": 420
+      },
+      "icon": "arista-switch",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "DC1LEAF6",
+      "position": {
+        "x": 720,
+        "y": 340
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1SPINE1",
+      "position": {
+        "x": 620,
+        "y": 420
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1SPINE2",
+      "position": {
+        "x": 620,
+        "y": 340
+      },
+      "icon": "arista-switch"
+    },
+    {
+      "id": "DC1FW2",
+      "position": {
+        "x": 860,
+        "y": 420
+      },
+      "icon": "fortigate"
+    },
+    {
+      "id": "DC1FW1",
+      "position": {
+        "x": 860,
+        "y": 340
+      },
+      "icon": "fortigate",
+      "iconCornerRadius": 0
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
